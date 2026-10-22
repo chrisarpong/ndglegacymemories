@@ -52,6 +52,13 @@ video,.fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cont
 .skip:hover{background:rgba(255,255,255,.12)}
 .done .skip{opacity:0;pointer-events:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+@media(max-height:420px) and (orientation:landscape){
+ .band{height:clamp(72px,22vh,90px)}
+ .enter{bottom:calc(clamp(72px,22vh,90px) + 10px)}
+ .enter h1{margin-bottom:10px}
+ .btn{padding:11px 28px}
+ .sub{margin-top:8px}
+}
 
 </style>
 </head>
