@@ -59,7 +59,7 @@ nav .btn{padding:10px 20px;color:var(--ink)}
 .layer{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease}
 .layer.on{opacity:.38}
 .logo-reveal{display:flex;align-items:center;justify-content:center}
-.logo-reveal img{width:min(520px,70%);transform:scale(.92);transition:transform 4s ease}
+.logo-reveal img{width:min(520px,70%);height:auto;transform:scale(.92);transition:transform 4s ease}
 .logo-reveal.on{opacity:.55}.logo-reveal.on img{transform:scale(1)}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,13,18,.88) 15%,rgba(11,13,18,.25));z-index:1}
 .hero .wrap{position:relative;z-index:2}
@@ -189,7 +189,7 @@ section{padding:72px 0}
 </head>
 <body>
 <header><div class="wrap bar">
- <a class="brand" href="#top" aria-label="NDG+ Legacy Memorials home"><img src="assets/ndg-logo.png" alt="NDG+ Legacy Memorials" width="900" height="278"></a>
+ <a class="brand" href="#top" aria-label="NDG+ Legacy Memorials home"><img src="assets/ndg-logo.png" alt="NDG+ Legacy Memorials" width="900" height="278" fetchpriority="high"></a>
  <button class="menu" aria-label="Open menu" aria-expanded="false">☰</button>
  <nav>
   <a href="#about">About</a><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#work">Portfolio</a><a href="#process">Process</a><a href="#faq">FAQ</a>
