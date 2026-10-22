@@ -163,6 +163,11 @@ footer{background:var(--ink);color:#a9a69c;padding:56px env(safe-area-inset-righ
 .foot div a{text-decoration:none}
 .foot div a:hover{color:var(--gold)}
 footer small{display:block;padding-top:24px}
+@media(prefers-reduced-motion:reduce){
+html{scroll-behavior:auto}
+*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}
+.tw.typing::after{display:none}
+}
 @media(max-width:920px){
 .menu{display:block}
 nav{display:none;position:absolute;top:72px;left:0;right:0;flex-direction:column;align-items:flex-start;gap:0;background:var(--ink);padding:12px 24px 24px}
@@ -430,8 +435,18 @@ document.getElementById('copyMsg').addEventListener('click',function(){
 /* Typewriter headline + subheading (loops) */
 (async function(){
  const els=[...document.querySelectorAll('.tw')],act=document.getElementById('heroActions');
- const wait=ms=>new Promise(r=>setTimeout(r,ms));
  els.forEach(e=>{e.dataset.t=e.textContent;e.style.minHeight=e.offsetHeight+'px'});
+ const reducedMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(reducedMotion){els.forEach(e=>{e.textContent=e.dataset.t;e.classList.remove('typing')});act.classList.remove('hide');return}
+ let heroVisible=true,resumeWait=null;
+ new IntersectionObserver(entries=>{
+  heroVisible=entries[0].isIntersecting;
+  if(heroVisible&&resumeWait){const resume=resumeWait;resumeWait=null;resume()}
+ }).observe(document.querySelector('.hero'));
+ const wait=ms=>new Promise(resolve=>{
+  const start=()=>{if(!heroVisible){resumeWait=start;return}setTimeout(resolve,ms)};
+  start();
+ });
  while(true){
   els.forEach(e=>e.textContent='');
   await wait(600);
@@ -454,6 +469,11 @@ document.getElementById('copyMsg').addEventListener('click',function(){
 (function(){
  const rv=document.getElementById('rv'),fb=document.getElementById('fb'),sl=[...document.querySelectorAll('.sl')];
  const wait=ms=>new Promise(r=>setTimeout(r,ms));
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){
+  rv.pause();rv.style.display='none';
+  fb.classList.remove('on');sl.forEach(s=>s.classList.remove('on'));sl[0]?.classList.add('on');
+  return;
+ }
  let videoOk=true;rv.addEventListener('error',()=>videoOk=false,true);
  async function reveal(){
   if(videoOk){

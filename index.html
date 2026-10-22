@@ -50,7 +50,7 @@ video,.fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cont
 .done .enter{pointer-events:auto}
 .skip{position:absolute;top:max(20px,env(safe-area-inset-top));right:20px;background:none;border:1px solid rgba(255,255,255,.35);color:#e8e5dc;padding:8px 18px;border-radius:30px;font:600 .8rem 'Manrope',sans-serif;cursor:pointer;transition:opacity .6s,background .2s}
 .skip:hover{background:rgba(255,255,255,.12)}
-.done .skip{opacity:0;pointer-events:none}
+.done .skip{visibility:hidden;opacity:0;pointer-events:none}
 :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
 @media(max-height:420px) and (orientation:landscape){
  .band{height:clamp(72px,22vh,90px)}
@@ -58,6 +58,12 @@ video,.fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cont
  .enter h1{margin-bottom:10px}
  .btn{padding:11px 28px}
  .sub{margin-top:8px}
+}
+@media(prefers-reduced-motion:reduce){
+*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+.track{will-change:auto}
+.band{opacity:1}
+.fallback img{opacity:1;transform:none}
 }
 
 </style>
@@ -80,23 +86,24 @@ video,.fallback{position:absolute;inset:0;width:100%;height:100%;object-fit:cont
 <script>
 (function(){
  const tr=document.getElementById('track');
- [...tr.children].forEach(i=>tr.appendChild(i.cloneNode()));
+ [...tr.children].forEach(i=>tr.appendChild(i.cloneNode(true)));
  function speed(){const half=tr.scrollWidth/2;if(half>0)tr.style.animationDuration=(half/520)+'s'}
  addEventListener('load',speed);
 })();
 (function(){
  const st=document.getElementById('stage'),v=document.getElementById('v'),fb=document.getElementById('fb');
- let finished=false;
+ let finished=false,fallbackStarted=false;
  const finish=()=>{if(finished)return;finished=true;st.classList.add('done');setTimeout(()=>document.getElementById('go').focus({preventScroll:true}),1300)};
  const enter=()=>{location.href='home.html'};
  document.getElementById('skip').addEventListener('click',enter);
- const useFallback=()=>{v.style.display='none';fb.style.display='flex';requestAnimationFrame(()=>fb.classList.add('run'));setTimeout(finish,3800)};
+ const useFallback=()=>{if(fallbackStarted||finished)return;fallbackStarted=true;v.style.display='none';fb.style.display='flex';requestAnimationFrame(()=>fb.classList.add('run'));setTimeout(finish,3800)};
  v.addEventListener('error',useFallback,true);
  v.addEventListener('ended',finish);
+ document.addEventListener('keydown',e=>{if(e.key==='Escape')enter()});
+ if(matchMedia('(prefers-reduced-motion: reduce)').matches){useFallback();finish();return}
  setTimeout(()=>{if(!finished&&v.paused)useFallback()},4000);
  setTimeout(finish,15000);
  const p=v.play();if(p&&p.catch)p.catch(useFallback);
- document.addEventListener('keydown',e=>{if(e.key==='Escape')enter()});
 })();
 </script>
 </body>
