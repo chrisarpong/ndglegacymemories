@@ -377,6 +377,13 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const nav=document.querySelector('nav'),btn=document.querySelector('.menu');
 btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
 nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
+document.querySelectorAll('a[href="#top"]').forEach(function(link){
+ link.addEventListener('click',function(e){
+  e.preventDefault();
+  if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);
+  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
+ });
+});
 /* Inline validation */
 var errorText={name:'Please enter your name.',phone:'Please enter your phone number.',service:'Please choose a service.',details:'Please enter your project details.'};
 document.querySelectorAll('#enquiry [required]').forEach(function(el){
