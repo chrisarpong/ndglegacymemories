@@ -60,7 +60,7 @@ On valid submission, the page formats the answers into a readable message and op
 
 This is a client-side handoff, not an online form backend. The website does not persist submissions, deliver email, or send WhatsApp messages automatically. The visitor must complete the send action in WhatsApp. The email in the contact section remains a regular `mailto:` link and does not participate in the form flow.
 
-Other contact links include direct WhatsApp, telephone and email. The public email is `hello@ndglegacy.com`. Facebook, Instagram and TikTok links are temporarily removed; `CLIENT-TODO.md` contains the exact code and insertion points for adding them back when ready.
+Other contact links include direct WhatsApp, telephone and email. The public email is `info@ndglegacy.com`. Facebook, Instagram and TikTok links are temporarily removed; `CLIENT-TODO.md` contains the exact code and insertion points for adding them back when ready.
 
 ## 5. Design and responsive behavior
 
@@ -90,7 +90,7 @@ The historical performance notes in `FIXES.md` record approximate referenced loc
 
 ### SEO and sharing
 
-The main page has a title, description, canonical URL, Open Graph and Twitter large-image metadata, and LocalBusiness JSON-LD built from information already presented on the page. The configured domain is `https://ndglegacy.com`; `/home` is the main canonical. The structured data includes `hello@ndglegacy.com` and omits `sameAs` while social links are absent. The splash is noindex and points its canonical to the main page. Both pages link the generated favicon, large favicon, Apple touch icon and 1200×630 sharing image.
+The main page has a title, description, canonical URL, Open Graph and Twitter large-image metadata, and LocalBusiness JSON-LD built from information already presented on the page. The configured domain is `https://ndglegacy.com`; `/home` is the main canonical. The structured data includes `info@ndglegacy.com` and omits `sameAs` while social links are absent. The splash is noindex and points its canonical to the main page. Both pages link the generated favicon, large favicon, Apple touch icon and 1200×630 sharing image.
 
 The configured production domain is `ndglegacy.com`. Confirm its DNS points to the intended Vercel project before launch. `CLIENT-TODO.md` tracks remaining client confirmations and the social links to add later.
 
@@ -111,7 +111,7 @@ The splash video is not required to navigate: the image fallback, Skip intro, Es
 See [CLIENT-TODO.md](CLIENT-TODO.md) for the tracked checklist. Key items are:
 
 - Confirm `ndglegacy.com` DNS and Vercel domain configuration.
-- Provision and monitor `hello@ndglegacy.com`.
+- Provision and monitor `info@ndglegacy.com`.
 - Confirm all package prices, fees, deposits and retainer details.
 - When ready, confirm the Facebook, Instagram and TikTok profiles and add them using `CLIENT-TODO.md`.
 

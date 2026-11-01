@@ -72,7 +72,7 @@ The repository is set up for static hosting on Vercel. The existing workflow use
 
 ### Custom domain setup
 
-The configured domain is **`ndglegacy.com`**. Both pages use it in canonical, social-sharing and structured-data URLs. The public contact email is **`hello@ndglegacy.com`**. Social profile links are intentionally absent until the client is ready to add them; [CLIENT-TODO.md](CLIENT-TODO.md) has the exact snippets and insertion points.
+The configured domain is **`ndglegacy.com`**. Both pages use it in canonical, social-sharing and structured-data URLs. The public contact email is **`info@ndglegacy.com`**. Social profile links are intentionally absent until the client is ready to add them; [CLIENT-TODO.md](CLIENT-TODO.md) has the exact snippets and insertion points.
 
 1. Confirm `ndglegacy.com` is registered to the client/business and the domain account is under their control.
 2. Turn on renewal reminders or auto-renew and protect the registrar account with two-factor authentication.
@@ -82,7 +82,7 @@ The configured domain is **`ndglegacy.com`**. Both pages use it in canonical, so
 6. Confirm canonical URLs, `og:url`, social image URLs, and the LocalBusiness JSON-LD use `https://ndglegacy.com`.
 7. Wait for Vercel to verify DNS and issue HTTPS, then open `/`, `/home`, portfolio images and the WhatsApp links on the live domain.
 
-See Vercel's [custom-domain setup guide](https://vercel.com/docs/domains/set-up-custom-domain) for current DNS verification and certificate steps. DNS settings belong to the registrar/DNS account; the site itself does not include email hosting. Confirm that `hello@ndglegacy.com` has a real, monitored mailbox.
+See Vercel's [custom-domain setup guide](https://vercel.com/docs/domains/set-up-custom-domain) for current DNS verification and certificate steps. DNS settings belong to the registrar/DNS account; the site itself does not include email hosting. Confirm that `info@ndglegacy.com` has a real, monitored mailbox.
 
 ## Launch checklist
 
@@ -90,7 +90,7 @@ Before calling the site production-ready, the client should confirm:
 
 - That `ndglegacy.com` and the Vercel project are controlled by the client/business.
 - Published package prices, rush fees, deposits, retainer, delivery and turnaround terms.
-- That `hello@ndglegacy.com` exists and is monitored.
+- That `info@ndglegacy.com` exists and is monitored.
 - Which Facebook, Instagram and TikTok profiles to add back; use the snippets in `CLIENT-TODO.md`.
 - That the WhatsApp number is the correct business contact and receives enquiries.
 - That the final production domain loads securely, the main route works at `/home`, metadata points to that domain, and the enquiry flow opens the expected WhatsApp chat.

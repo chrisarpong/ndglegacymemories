@@ -1,7 +1,7 @@
 # Client follow-up
 
 - [ ] Confirm `ndglegacy.com` resolves to the intended Vercel project and HTTPS is active.
-- [ ] Verify that `hello@ndglegacy.com` receives mail and is monitored.
+- [ ] Verify that `info@ndglegacy.com` receives mail and is monitored.
 - [ ] Confirm the listed pricing is current: Silver GHS 2,500, Gold GHS 5,000, Platinum GHS 10,000, Diaspora from GHS 3,000, partner retainer GHS 1,500/month, rush fees, and deposit terms.
 - [ ] Confirm whether the business is ready to restore its Facebook, Instagram and TikTok profile links using the notes below.
 
