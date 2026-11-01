@@ -47,7 +47,7 @@ The home page follows this content order:
 8. A portfolio gallery of fifteen examples. Selecting an example opens its full image in a new tab.
 9. A four-step explanation of the order process.
 10. Frequently asked questions.
-11. Contact details, social profiles and the enquiry form.
+11. Contact details, WhatsApp-first enquiry form and email address. Social links are temporarily removed.
 12. Footer navigation, contact shortcuts and copyright line.
 
 The pricing currently displayed includes Silver at GHS 2,500, Gold at GHS 5,000, Platinum at GHS 10,000, diaspora support from GHS 3,000, and a partner retainer of GHS 1,500 per month. The site also states standard and rush turnaround rates and a 70% production deposit. These are published business claims and remain subject to client confirmation.
@@ -56,11 +56,11 @@ The pricing currently displayed includes Silver at GHS 2,500, Gold at GHS 5,000,
 
 The form asks for name, phone, email, service and project details. Name, phone, service and details are required; email is optional. Required fields receive inline validation messages and an invalid state, with no browser alert dialog.
 
-On valid submission, the page formats the answers into a readable message and opens WhatsApp at `https://wa.me/233200968878` with the message URL-encoded. If the browser blocks the new tab, the page navigates to the WhatsApp URL directly. The page then replaces the form with an inline confirmation panel. The panel lets the visitor open WhatsApp again, copy the prepared message (using the Clipboard API and a textarea/`execCommand` fallback), or call the studio.
+On valid submission, the page formats the answers into a readable message and opens WhatsApp at `https://wa.me/233200968878` with the message URL-encoded. It shows the inline confirmation panel before trying to open WhatsApp. If the browser blocks the new tab, the page stays open and visitors can retry WhatsApp, copy the prepared message (using the Clipboard API and a textarea/`execCommand` fallback), or call the studio.
 
 This is a client-side handoff, not an online form backend. The website does not persist submissions, deliver email, or send WhatsApp messages automatically. The visitor must complete the send action in WhatsApp. The email in the contact section remains a regular `mailto:` link and does not participate in the form flow.
 
-Other contact links include direct WhatsApp, telephone, email and Facebook, Instagram and TikTok profiles. The business should confirm the mailbox and social profiles before relying on them publicly.
+Other contact links include direct WhatsApp, telephone and email. The public email is `hello@ndglegacy.com`. Facebook, Instagram and TikTok links are temporarily removed; `CLIENT-TODO.md` contains the exact code and insertion points for adding them back when ready.
 
 ## 5. Design and responsive behavior
 
@@ -90,13 +90,13 @@ The historical performance notes in `FIXES.md` record approximate referenced loc
 
 ### SEO and sharing
 
-The main page has a title, description, canonical URL, Open Graph and Twitter large-image metadata, and LocalBusiness JSON-LD built from information already presented on the page. It uses `https://ndglegacymemorials.com/home` as the canonical. The splash is noindex and points its canonical to the main page. Both pages link the generated favicon, large favicon, Apple touch icon and 1200×630 sharing image.
+The main page has a title, description, canonical URL, Open Graph and Twitter large-image metadata, and LocalBusiness JSON-LD built from information already presented on the page. The configured domain is `https://ndglegacy.com`; `/home` is the main canonical. The structured data includes `hello@ndglegacy.com` and omits `sameAs` while social links are absent. The splash is noindex and points its canonical to the main page. Both pages link the generated favicon, large favicon, Apple touch icon and 1200×630 sharing image.
 
-The domain is a placeholder until the client purchases/configures the domain. Before launch, update the canonical, metadata, structured-data URL and client documentation together. `CLIENT-TODO.md` lists the known occurrences and client approvals.
+The configured production domain is `ndglegacy.com`. Confirm its DNS points to the intended Vercel project before launch. `CLIENT-TODO.md` tracks remaining client confirmations and the social links to add later.
 
 ## 7. Vercel hosting
 
-`vercel.json` sets `cleanUrls` to `true`, allowing `home.html` to be served at `/home`, and configures `/assets/*` with `Cache-Control: public, max-age=2592000, stale-while-revalidate=86400`. The splash link points to `home.html`; Vercel's clean URL behavior serves the destination at `/home`.
+`vercel.json` sets `cleanUrls` to `true`, allowing `home.html` to be served at `/home`, and configures `/assets/*` with `Cache-Control: public, max-age=2592000, stale-while-revalidate=86400`. The splash link points to `home.html`; Vercel's clean URL behavior serves the destination at `/home`. `.vercelignore` excludes the five project Markdown files from Vercel deployment.
 
 The project is a static deployment: there is no build command or output directory to configure. GitHub's `main` branch is the production branch. The repository should be connected to the intended Vercel project, and successful production deployment status should be checked in Vercel after changes are pushed. Branches other than `main` may produce preview deployments, which do not replace the production deployment until promoted or merged to `main`.
 
@@ -110,10 +110,10 @@ The splash video is not required to navigate: the image fallback, Skip intro, Es
 
 See [CLIENT-TODO.md](CLIENT-TODO.md) for the tracked checklist. Key items are:
 
-- Confirm the production domain and configure it in Vercel; replace the placeholder URL consistently.
-- Provision and monitor `hello@ndglegacymemorials.com`.
+- Confirm `ndglegacy.com` DNS and Vercel domain configuration.
+- Provision and monitor `hello@ndglegacy.com`.
 - Confirm all package prices, fees, deposits and retainer details.
-- Confirm ownership and activity of the linked Facebook, Instagram and TikTok profiles.
+- When ready, confirm the Facebook, Instagram and TikTok profiles and add them using `CLIENT-TODO.md`.
 
 ## 10. Related documentation
 
