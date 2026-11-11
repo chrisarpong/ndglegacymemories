@@ -377,12 +377,20 @@ document.getElementById('year').textContent=new Date().getFullYear();
 const nav=document.querySelector('nav'),btn=document.querySelector('.menu');
 btn.addEventListener('click',()=>{const o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o)});
 nav.addEventListener('click',e=>{if(e.target.tagName==='A'){nav.classList.remove('open');btn.setAttribute('aria-expanded',false)}});
-document.querySelectorAll('a[href="#top"]').forEach(function(link){
- link.addEventListener('click',function(e){
-  e.preventDefault();
-  if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);
-  window.scrollTo({top:0,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});
- });
+/* Smooth-scroll all #anchor links without putting # in the URL */
+document.addEventListener('click',function(e){
+ var link=e.target.closest('a[href^="#"]');
+ if(!link)return;
+ e.preventDefault();
+ var id=link.getAttribute('href').slice(1);
+ var smooth=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+ if(id==='top'||!id){
+  window.scrollTo({top:0,behavior:smooth?'smooth':'auto'});
+ }else{
+  var el=document.getElementById(id);
+  if(el)el.scrollIntoView({behavior:smooth?'smooth':'auto',block:'start'});
+ }
+ if(location.hash)history.replaceState(history.state,'',location.pathname+location.search);
 });
 /* Inline validation */
 var errorText={name:'Please enter your name.',phone:'Please enter your phone number.',service:'Please choose a service.',details:'Please enter your project details.'};
